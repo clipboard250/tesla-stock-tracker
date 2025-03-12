@@ -19,9 +19,8 @@ async function loadStockData() {
         const response = await fetch("tesla_stock_data.csv");
         const data = await response.text();
 
-        // Parse CSV
-        const rows = data.split("\n").slice(1); // Skip header
-        const latestStock = rows[rows.length - 1].split(","); // Last row
+        const rows = data.split("\n").slice(1); // Skip header row
+        const latestStock = rows[0].split(","); // Correctly grab first row of actual data
 
         const date = latestStock[0];
         const price = parseFloat(latestStock[1]);
@@ -37,8 +36,8 @@ async function loadStockData() {
     }
 }
 
-// Set the date picker to the most recent trading day
-document.getElementById("datePicker").value = "2025-03-12";
-
 // Load stock data when the page loads
 window.onload = loadStockData;
+
+// Set the date picker to the most recent trading day
+document.getElementById("datePicker").value = getMostRecentTradingDay();
