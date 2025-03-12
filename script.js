@@ -29,7 +29,7 @@ async function loadStockData() {
         if (selectedData) {
             const date = selectedData[0];
             const price = parseFloat(selectedData[1]);
-            document.getElementById("stockPrice").innerText = `Tesla closed at $${price.toFixed(2)} on ${date}`;
+            document.getElementById("stockPrice").innerText = `Tesla closed at $${price.toFixed(2)} on ${datePicker}`;
         } else {
             document.getElementById("stockPrice").innerText = "Stock data unavailable for selected date.";
         }
