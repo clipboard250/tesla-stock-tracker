@@ -46,6 +46,8 @@ document.getElementById("getData").onclick = loadStockData;    }
 
 // Load stock data when the page loads
 window.onload = loadStockData;
-
+document.getElementById("getData").addEventListener("click", () => {
+    loadStockData();
+});
 // Set the date picker to the most recent trading day
 document.getElementById("datePicker").value = getMostRecentTradingDay();
