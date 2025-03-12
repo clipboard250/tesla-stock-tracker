@@ -20,21 +20,28 @@ async function loadStockData() {
         const response = await fetch("tesla_stock_data.csv");
         const data = await response.text();
 
-        const rows = data.split("\n").slice(1); // Skip header row
-      const latestStock = rows[rows.length - 2].split(","); // Correctly grab first row of actual data
+        const rows = data.split("\n").slice(1);
+        const stockData = rows.map(row => row.split(",")).filter(row => row.length === 2);
 
-        const date = latestStock[0];
-        const price = parseFloat(latestStock[1]);
+        const datePicker = document.getElementById("datePicker").value;
+        const selectedData = stockData.find(row => row[0] === datePicker);
 
-        if (!isNaN(price)) {
+        if (selectedData) {
+            const date = selectedData[0];
+            const price = parseFloat(selectedData[1]);
             document.getElementById("stockPrice").innerText = `Tesla closed at $${price.toFixed(2)} on ${date}`;
         } else {
-            document.getElementById("stockPrice").innerText = "Stock data unavailable.";
+            document.getElementById("stockPrice").innerText = "Stock data unavailable for selected date.";
         }
     } catch (error) {
         console.error("Error loading stock data:", error);
         document.getElementById("stockPrice").innerText = "Error fetching stock data.";
     }
+}
+
+// Load stock data on page load and when date is changed
+window.onload = loadStockData;
+document.getElementById("getData").onclick = loadStockData;    }
 }
 
 // Load stock data when the page loads
