@@ -41,7 +41,7 @@ async function loadStockData() {
 
 // Load stock data on page load and when date is changed
 window.onload = loadStockData;
-document.getElementById("getData").onclick = loadStockData;    }
+document.getElementById("getData").onclick = loadStockData;
 }
 
 // Load stock data when the page loads
