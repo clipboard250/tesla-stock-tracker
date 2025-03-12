@@ -1,21 +1,71 @@
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF;
+    color: #333333;
     text-align: center;
-    padding: 20px;
 }
 
 h1 {
-    color: #E82127;
+    color: #E82127; /* Tesla red */
+    margin-top: 10px;
 }
 
-button {
-    background-color: #E82127;
-    color: white;
+h2#stockPrice {
+    font-size: 1.4rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+input[type="date"] {
+    padding: 8px;
+    font-size: 1rem;
+    border: 2px solid #cccccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+button#getData {
+    background-color: #24A148; /* Green button color */
+    color: #FFFFFF;
     border: none;
-    padding: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #C6171C;
+button#getData:hover {
+    background-color: #1C7A38; /* Darker green on hover */
+}
+
+footer {
+    font-size: 0.85rem;
+    margin-top: 30px;
+    padding-bottom: 20px;
+    color: #777;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2#stockPrice {
+        font-size: 1.1rem;
+    }
+
+    input[type="date"], button#getData {
+        width: 90%;
+        margin: 5px auto;
+        display: block;
+    }
 }
