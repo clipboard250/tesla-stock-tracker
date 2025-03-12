@@ -3,7 +3,7 @@ import csv
 
 # Fetch Tesla historical stock data from Jan 1, 2017, to today
 tsla = yf.Ticker("TSLA")
-history = tsla.history(start="2017-01-01")
+history = tsla.history(start="2017-01-01", end=datetime.datetime.today() - datetime.timedelta(days=1))
 
 # Save historical data to CSV file
 csv_filename = "tesla_stock_data.csv"
