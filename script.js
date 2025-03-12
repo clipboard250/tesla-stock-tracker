@@ -38,7 +38,7 @@ async function loadStockData() {
 }
 
 // Set the date picker to the most recent trading day
-document.getElementById("datePicker").value = getMostRecentTradingDay();
+document.getElementById("datePicker").value = "2025-03-12";
 
 // Load stock data when the page loads
 window.onload = loadStockData;
