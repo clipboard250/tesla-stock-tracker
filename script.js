@@ -1,16 +1,17 @@
 // Function to get the most recent trading day
 function getMostRecentTradingDay() {
     let today = new Date();
-    let dayOfWeek = today.getDay(); // 0 = Sunday, 6 = Saturday
+    let dayOfWeek = today.getDay(); // Sunday = 0, Monday = 1, ..., Saturday = 6
 
-    // If today is Saturday or Sunday, set it to last Friday
-    if (dayOfWeek === 0) {
-        today.setDate(today.getDate() - 2);
-    } else if (dayOfWeek === 6) {
-        today.setDate(today.getDate() - 1);
+    if (dayOfWeek === 0) { // Sunday
+        today.setDate(today.getDate() - 2); // Set to Friday
+    } else if (dayOfWeek === 1) { // Monday
+        today.setDate(today.getDate() - 3); // Set to Friday
+    } else {
+        today.setDate(today.getDate() - 1); // Set to yesterday
     }
 
-    return today.toISOString().split('T')[0]; // Format YYYY-MM-DD
+    return today.toISOString().split('T')[0]; // YYYY-MM-DD
 }
 
 // Function to load stock data from the CSV file
