@@ -39,14 +39,11 @@ async function loadStockData() {
     }
 }
 
-// Load stock data on page load and when date is changed
-window.onload = loadStockData;
-document.getElementById("getData").onclick = loadStockData;
-
 // Load stock data when the page loads
-window.onload = loadStockData;
-document.getElementById("getData").addEventListener("click", () => {
+window.onload = () => {
+    document.getElementById("datePicker").value = getMostRecentTradingDay();
     loadStockData();
-});
-// Set the date picker to the most recent trading day
-document.getElementById("datePicker").value = getMostRecentTradingDay();
+};
+
+// Load data when "Get Data" button is clicked
+document.getElementById("getData").addEventListener("click", loadStockData);
