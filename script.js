@@ -21,7 +21,7 @@ async function loadStockData() {
         const data = await response.text();
 
         const rows = data.split("\n").slice(1); // Skip header row
-      const latestStock = rows.find(row => row.trim() !== "").split(","); // Correctly grab first row of actual data
+      const latestStock = rows[rows.length - 2].split(","); // Correctly grab first row of actual data
 
         const date = latestStock[0];
         const price = parseFloat(latestStock[1]);
